@@ -6,7 +6,7 @@ The following hardware is used for the setup:
 - ESP32 GPIO Extension Board
 - Breadboard
 - Two buttons
-- One 3.7 V 650 mA rechargeable battery
+- One 3.7 V 650 mAh rechargeable battery
 - Wires
 
 The two buttons go onto the breadboard and are then each connected with two wires. One wire goes from one of the metal legs of the button to GND. Then the other wire will connect to one of the numbered GPIO pins to the ESP32. I used GPIO pins 18 and 32 for this project, however others could be used. Just make sure that in `input.ino` you set the correct GPIO numbers. Optionally, this setup uses a battery so the device can work wirelessly (although this is optional and you can plug the ESP32 into your laptop or some other power source if you do not want to deal with a battery setup).
