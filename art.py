@@ -5,14 +5,18 @@ from random import randint, randrange
 import socket
 import threading
 
+# Create the UDP socket
 UDP_IP = "" # The IP that is printed in the serial monitor from the ESP32
 SHARED_UDP_PORT = 4210
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # Internet  # UDP
 sock.connect((UDP_IP, SHARED_UDP_PORT))
+
+# Set screen size of display
 screen = Screen()
 screen.setup(2000, 1000)
 turtle.title("Creative Random Art")
 
+# Set dimension size
 LEFT = -800
 RIGHT = 800
 TOP = 400
@@ -31,6 +35,7 @@ def y_pos():
 
 t = turtle.Turtle()
 
+# Creates a rectangle starting from the bottom and moving up and then going right
 def down_up_right():
     global t, verticals, horizontals, color
     t.color("black", color)
@@ -63,7 +68,7 @@ def down_up_right():
     t.goto(start_x, start_y)
     t.end_fill()
 
-
+# Creates a rectangle starting from the bottom and moving up and then going left
 def down_up_left():
     global t, verticals, horizontals, color
     t.color("black", color)
@@ -96,7 +101,7 @@ def down_up_left():
     t.goto(start_x, start_y)
     t.end_fill()
 
-
+# Creates a rectangle that goes from the left to the right and then moves up
 def left_right_up():
     global t, verticals, horizontals, color
     t.color("black", color)
@@ -129,7 +134,7 @@ def left_right_up():
     t.goto(start_x, start_y)
     t.end_fill()
 
-
+# Creates a rectangle that goes from the left to the right and then moves down
 def left_right_down():
     global t, verticals, horizontals, color
     t.color("black", color)

@@ -3,7 +3,7 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
 
-//set up to connect to an existing network (e.g. mobile hotspot from laptop that will run the python code)
+// Initial code for setting up connection
 const char* ssid = "";
 const char* password = "";
 WiFiUDP Udp;
@@ -16,6 +16,8 @@ void setup()
   Serial.begin(115200);
   WiFi.begin(ssid, password);
   Serial.println("");
+  
+  // Connecting to the buttons
   pinMode(18, INPUT_PULLUP);
   pinMode(32, INPUT_PULLUP);
 
@@ -28,7 +30,7 @@ void setup()
   Udp.begin(localUdpPort);
   Serial.printf("Now listening at IP %s, UDP port %d\n", WiFi.localIP().toString().c_str(), localUdpPort);
 
-  // we recv one packet from the remote so we can know its IP and port
+  // Tests that a connection has been established
   bool readPacket = false;
   while (!readPacket) {
     int packetSize = Udp.parsePacket();
@@ -49,7 +51,7 @@ void setup()
 
 void loop()
 {
-  // once we know where we got the inital packet from, send data back to that IP address and port
+  // Begin sending button input to the client
   Udp.beginPacket(Udp.remoteIP(), Udp.remotePort());
   int colorButton = digitalRead(18);
   int directionButton = digitalRead(32);
